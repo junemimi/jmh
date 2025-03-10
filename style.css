@@ -1,5 +1,72 @@
+/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 50px;
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Site title */
+.site-title {
+    font-size: 32px;
+    color: grey;
+    margin: 0;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Social media icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Different colors for each icon */
+.linkedin { background-color: #0077b5; }
+.github { background-color: #333; }
+.instagram { background-color: #E4405F; }
+.email { background-color: #D44638; }
+
+.icon:hover {
+    transform: scale(1.1);
 }
