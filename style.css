@@ -17,9 +17,21 @@ header {
 }
 
 /* Site title */
-.site-title {
+.site-title-light {
     font-size: 32px;
-    color: grey;
+    color: #5B4859;
+    margin: 0;
+}
+
+.site-title-medium {
+    font-size: 32px;
+    color: #503F4E;
+    margin: 0;
+}
+
+.site-title-dark {
+    font-size: 32px;
+    color: #453643;
     margin: 0;
 }
 
