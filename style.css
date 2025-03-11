@@ -17,22 +17,21 @@ header {
 }
 
 /* Site title */
-.site-title-light {
+.site-title {
     font-size: 32px;
-    color: #5B4859;
     margin: 0;
 }
 
-.site-title-medium {
-    font-size: 32px;
-    color: #503F4E;
-    margin: 0;
+.june {
+    color: #453643; /* Change to your preferred color for "study" */
 }
 
-.site-title-dark {
-    font-size: 32px;
-    color: #453643;
-    margin: 0;
+.mi {
+    color: #675165; /* Change to your preferred color for "withmimi" */
+}
+
+.hong {
+    color: #896C86; /* Change to your preferred color for "withmimi" */
 }
 
 /* Navigation styles */
