@@ -11,7 +11,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
+    padding: 15px 15px;
     background-color: #d6ccc2;
     box-shadow: 0 4px 6px #453643;
 }
