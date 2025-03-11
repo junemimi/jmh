@@ -23,15 +23,15 @@ header {
 }
 
 .june {
-    color: #453643; /* Change to your preferred color for "study" */
+    color: red; /* Change to your preferred color for "study" */
 }
 
 .mi {
-    color: #675165; /* Change to your preferred color for "withmimi" */
+    color: blue; /* Change to your preferred color for "withmimi" */
 }
 
 .hong {
-    color: #896C86; /* Change to your preferred color for "withmimi" */
+    color: white; /* Change to your preferred color for "withmimi" */
 }
 
 /* Navigation styles */
