@@ -1,66 +1,379 @@
-/* General styles */
+:root {
+    --bg-color: #F1E9E4;
+    --text-color: #BF8988;
+    --icon-color: #F8F4F2;
+    --image: url('images/lightmode.png');
+}
+.dark-mode {
+    --bg-color: #695B4F;
+    --text-color: #C4A49E;
+    --icon-color: #5D5146;
+    --image: url('images/darkmode.png');
+}
+
 body {
-    font-family: Garamond, serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
     padding: 0;
-    background-color: #EFEAE6;
 }
 
-/* Header styling */
-header {
+.home {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px 15px;
-    background-color: #d6ccc2;
-    border-bottom: 2px solid #CEC2B6;
+    height: 100vh;
+    text-align: center;
+    position: relative;
 }
 
-/* Site title */
-.site-title {
-    font-size: 32px;
+/* Container for content (Text + Email Icon) */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 60px;
+}
+
+.home h1 {
+    font-size: clamp(60px, 12vw, 150px);
+    color: var(--text-color);
     margin: 0;
 }
 
-.june {
-    color: #9C8199;
+.home h2 {
+    font-size: clamp(30px, 6vw, 75px);
+    color: var(--bg-color);
+    margin: 0;
+    text-shadow: 
+        1.5px 1.5px 0 var(--text-color),
+        -1.5px -1.5px 0 var(--text-color), 
+        1.5px -1.5px 0 var(--text-color), 
+        -1.5px 1.5px 0 var(--text-color);
 }
 
-.mi {
-    color: #725A6F;
-}
-
-.hong {
-    color: #453643;
-}
-
-/*Social media icon container*/
-
-
-/* Navigation styles */
-nav {
+.bottom-section {
     display: flex;
-    gap: 20px;
+    justify-content: center; /* Center the contents horizontally */
+    align-items: center; /* Align items vertically */
+    gap: 50px; /* Adjusted spacing between elements */
+    margin-top: 5px; /* Adjust spacing as needed */
 }
 
-nav a {
+/* Email Link */
+.email-link {
+    display: flex;
+    flex-direction: column; /* Icon above text */
+    align-items: center;
     text-decoration: none;
-    font-size: 18px;
-    color: black;
-    padding: 5px 10px;
+    color: var(--text-color);
+    font-size: clamp(10px, 2vw, 20px);
     transition: all 0.3s ease;
 }
 
-nav a:hover {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
+/* Email Icon */
+.email-icon {
+    width: clamp(20px, 8vw, 50px);
+    height: clamp(20px, 8vw, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--icon-color);
+    border-radius: 50%;
+    font-size: clamp(18px, 5vw, 30px);
+    margin-bottom: 5px;
+    margin-right: 40%;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Hover Effects */
+.email-link:hover .email-icon,
+.email-link:hover span {
+    transform: scale(1.1);
+}
+
+/* Text next to icon */
+.email-link span {
+    font-size: clamp(10px, 2vw, 16px);
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    margin-right: 40%;
+}
+
+.desc-image-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 5px; /* Fixed spacing between desc-text and image */
+}
+
+.desc-text {
+    font-size: clamp(8px, 2vw, 16px); /* Adjust font size as needed */
+    color: var(--text-color);
+    padding-left: 30%;
+    padding-bottom: 20%;
+    padding-top: 5px;
+    text-align: right;
+    font-style: italic; /* Optional: Add style to the text */
+    white-space: nowrap;
+}
+
+.image {
+    width: clamp(37px, 10vw, 56px); /* Adjust size as needed */
+    height: clamp(49px, 10vw, 74px); /* Adjust size as needed */
+    margin: 0;
+    padding: 0;
+    background-image: var(--image); /* Use the custom property */
+    background-size: contain; /* Ensure the entire image fits within the container */
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image within the container */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+.home-nav-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -70px;
+    left: 0;
+    right: 0;
+    padding: 0 10%;
+    z-index: 10;
+}
+
+.home-nav-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between icons */
+    margin-bottom: 20px; /* Pushes them above the h1 */
+}
+
+.home-nav-link {
+    display: flex;
+    flex-direction: column-reverse; /* Labels above icons */
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: clamp(10px, 2vw, 20px);
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px; /* Ensure the link has a clickable area */
+}
+
+.home-nav-icon {
+    width: clamp(20px, 8vw, 50px);
+    height: clamp(20px, 8vw, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--icon-color);
+    border-radius: 50%;
+    font-size: clamp(18px, 5vw, 30px);
+    margin-top: 5px; /* Adjust spacing between label and icon */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.home-nav-link span {
+    font-size: clamp(10px, 2vw, 16px);
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Hover effect */
+.home-nav-link:hover .home-nav-icon,
+.home-nav-link:hover span {
+    transform: scale(1.1); /* Scale up the icon and text */
+}
+
+/* Dark mode styles */
+.dark-mode .home-nav-icon {
+    background-color: var(--icon-color);
+    color: var(--bg-color);
+}
+
+/* ABOUT PAGE */
+.about-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px; /* 5px padding on the right */
+    background-color: var(--bg-color); /* Use the same background color */
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+.about-title {
+    text-decoration: none; /* Remove underline */
+    color: var(--text-color); /* Use the same text color as the rest of the site */
+    font-size: clamp(24px, 3vw, 48px); /* Icon size */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.about-title h1 {
+    margin: 0; /* Remove default margin */
+    font-size: clamp(24px, 3vw, 48px); /* Icon size */
+    color: inherit; /* Ensure the h1 inherits the color from .about-title */
+}
+
+.about-nav-section {
+    display: flex;
+    gap: clamp(10px, 5vw, 30px); /* Responsive spacing between icons */
+    align-items: center; /* Vertically center icons */
+    margin-left: auto; /* Push the nav-section to the right */
+    flex-shrink: 0; /* Prevent the nav-section from shrinking */
+    padding-left: 5px; /* 5px from the left border of nav-section */
+    padding-right: 5px; /* 5px from the right border of nav-section */
+}
+
+/* Header-specific nav icons */
+.about-header-nav-link {
+    display: flex;
+    flex-direction: column; /* Icon above text */
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: clamp(16px, 20vw, 28px);
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px; /* Ensure the link has a clickable area */
+    font-family: inherit;
+}
+
+.about-header-nav-icon {
+    width: clamp(15px, 10vw, 60px); /* Adjust size as needed */
+    height: clamp(15px, 10vw, 60px); /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--icon-color);
+    border-radius: 50%;
+    font-size: clamp(24px, 6vw, 36px); /* Increase icon font size */
+    margin-bottom: 5px; /* Space between icon and text */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.about-header-nav-link:hover .about-header-nav-icon,
+.about-header-nav-link:hover span {
+    transform: scale(1.1); /* Scale up the icon and text */
+}
+
+.about-header-nav-link span {
+    font-size: clamp(14px, 2vw, 20px);
+    font-family: inherit;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* About Page Content */
+
+.about-content h2 {
+    font-size: clamp(30px, 6vw, 75px);
+    color: var(--bg-color);
+    margin: 0;
+    text-shadow: 
+        1.5px 1.5px 0 var(--text-color),
+        -1.5px -1.5px 0 var(--text-color), 
+        1.5px -1.5px 0 var(--text-color), 
+        -1.5px 1.5px 0 var(--text-color);
+}
+
+.about-content {
+    padding: 20px 10%; /* Add padding to the sides */
+    background-color: var(--bg-color); /* Use the same background color */
+    color: var(--text-color); /* Use the same text color */
+}
+
+.about-content p {
+    font-size: clamp(16px, 2vw, 24px); /* Responsive font size */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* About Me Container */
+.about-me-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+/* About Me Heading */
+.about-me-container h2 {
+    font-size: clamp(30px, 6vw, 75px);
+    color: var(--bg-color);
+    margin: 0 0 20px 0; /* Add some spacing below the heading */
+    text-shadow: 
+        1.5px 1.5px 0 var(--text-color),
+        -1.5px -1.5px 0 var(--text-color), 
+        1.5px -1.5px 0 var(--text-color), 
+        -1.5px 1.5px 0 var(--text-color);
+}
+
+/* About Me Content (Image + Text) */
+.about-me-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between image and text */
+    width: 100%;
+}
+
+/* Image Styling */
+.about-me-image {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+    height: auto;
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Text Styling */
+.about-me-content p {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    margin: 0;
+    text-align: left; /* Align text to the left */
+}
+
+/* Responsive Layout for Wider Screens */
+@media (min-width: 768px) {
+    .about-me-content {
+        flex-direction: row; /* Side by side on wider screens */
+        align-items: flex-start; /* Align items to the top */
+        text-align: left; /* Align text to the left */
+    }
+
+    .about-me-image {
+        max-width: 40%; /* Adjust as needed */
+        margin-right: 20px; /* Space between image and text */
+    }
+}
+
+/*Footer*/
+.footer {
+    background-color: var(--bg-color); /* Use the same background color as the page */
+    padding: 20px 0; /* Add some padding */
+    text-align: center; /* Center the content */
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 /* Social media icons */
 .social-icons {
     display: flex;
-    gap: 15px;
+    justify-content: center; /* Center the icons horizontally */
+    gap: 15px; /* Space between icons */
 }
 
 .social-icons a {
