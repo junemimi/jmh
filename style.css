@@ -2,15 +2,15 @@
     --bg-color: #F1E9E4;
     --text-color: #BF8988;
     --icon-color: #F8F4F2;
-    --image: url('images/lightmode.png');
     --social-color: #F8F4F2;
+    --image: url('images/lightmode.png');
 }
 .dark-mode {
     --bg-color: #695B4F;
     --text-color: #C4A49E;
     --icon-color: #5D5146;
-    --image: url('images/darkmode.png');
     --social-color: #5D5146;
+    --image: url('images/darkmode.png');
 }
 
 body {
@@ -31,7 +31,6 @@ body {
     position: relative;
 }
 
-/* Container for content (Text + Email Icon) */
 .content {
     display: flex;
     flex-direction: column;
@@ -51,21 +50,20 @@ body {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
     margin: 0;
-    -webkit-text-stroke: 2px var(--text-color); /* Outline width and color */
+    -webkit-text-stroke: 2px var(--text-color);
 }
 
 .bottom-section {
     display: flex;
-    justify-content: center; /* Center the contents horizontally */
-    align-items: center; /* Align items vertically */
-    gap: 50px; /* Adjusted spacing between elements */
-    margin-top: 5px; /* Adjust spacing as needed */
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 5px;
 }
 
-/* Email Link */
 .email-link {
     display: flex;
-    flex-direction: column; /* Icon above text */
+    flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: var(--text-color);
@@ -73,7 +71,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Email Icon */
 .email-icon {
     width: clamp(20px, 8vw, 50px);
     height: clamp(20px, 8vw, 50px);
@@ -88,13 +85,11 @@ body {
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* Hover Effects */
 .email-link:hover .email-icon,
 .email-link:hover span {
     transform: scale(1.1);
 }
 
-/* Text next to icon */
 .email-link span {
     font-size: clamp(10px, 2vw, 16px);
     font-weight: bold;
@@ -104,31 +99,31 @@ body {
 
 .desc-image-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 5px; /* Fixed spacing between desc-text and image */
+    align-items: center;
+    gap: 5px;
 }
 
 .desc-text {
-    font-size: clamp(8px, 2vw, 16px); /* Adjust font size as needed */
+    font-size: clamp(8px, 2vw, 16px);
     color: var(--text-color);
     padding-left: 30%;
     padding-bottom: 20%;
     padding-top: 5px;
     text-align: right;
-    font-style: italic; /* Optional: Add style to the text */
+    font-style: italic;
     white-space: nowrap;
 }
 
 .image {
-    width: clamp(37px, 10vw, 56px); /* Adjust size as needed */
-    height: clamp(49px, 10vw, 74px); /* Adjust size as needed */
+    width: clamp(37px, 10vw, 56px);
+    height: clamp(49px, 10vw, 74px);
     margin: 0;
     padding: 0;
-    background-image: var(--image); /* Use the custom property */
-    background-size: contain; /* Ensure the entire image fits within the container */
+    background-image: var(--image);
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; /* Center the image within the container */
-    flex-shrink: 0; /* Prevent the image from shrinking */
+    background-position: center;
+    flex-shrink: 0;
 }
 
 .home-nav-section {
@@ -146,13 +141,13 @@ body {
 .home-nav-icons {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Space between icons */
-    margin-bottom: 20px; /* Pushes them above the h1 */
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
 .home-nav-link {
     display: flex;
-    flex-direction: column-reverse; /* Labels above icons */
+    flex-direction: column-reverse;
     align-items: center;
     text-decoration: none;
     color: var(--text-color);
@@ -162,7 +157,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px; /* Ensure the link has a clickable area */
+    padding: 10px;
 }
 
 .home-nav-icon {
@@ -174,7 +169,7 @@ body {
     background-color: var(--icon-color);
     border-radius: 50%;
     font-size: clamp(18px, 5vw, 30px);
-    margin-top: 5px; /* Adjust spacing between label and icon */
+    margin-top: 5px;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
@@ -184,31 +179,28 @@ body {
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* Hover effect */
 .home-nav-link:hover .home-nav-icon,
 .home-nav-link:hover span {
-    transform: scale(1.1); /* Scale up the icon and text */
+    transform: scale(1.1);
 }
 
-/* Dark mode styles */
 .dark-mode .home-nav-icon {
     background-color: var(--icon-color);
     color: var(--bg-color);
 }
 
-/* ABOUT PAGE */
-.about-header {
+.header {
     display: flex;
     align-items: center;
-    padding: 15px 15px; /* 5px padding on the right */
-    background-color: var(--bg-color); /* Use the same background color */
-    overflow: hidden; /* Prevent content from overflowing */
+    padding: 15px 15px; 
+    background-color: var(--bg-color); 
+    overflow: hidden; 
 }
 
-.about-title {
-    text-decoration: none; /* Remove underline */
-    color: var(--text-color); /* Use the same text color as the rest of the site */
-    font-size: clamp(24px, 3vw, 48px); /* Icon size */
+.title {
+    text-decoration: none; 
+    color: var(--text-color); 
+    font-size: clamp(24px, 3vw, 48px);
     height: 40px;
     display: flex;
     align-items: center;
@@ -216,26 +208,25 @@ body {
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.about-title h1 {
-    margin: 0; /* Remove default margin */
-    font-size: clamp(24px, 3vw, 48px); /* Icon size */
-    color: inherit; /* Ensure the h1 inherits the color from .about-title */
+.title h1 {
+    margin: 0; 
+    font-size: clamp(24px, 3vw, 48px);
+    color: inherit; 
 }
 
-.about-nav-section {
+.nav-section {
     display: flex;
-    gap: clamp(10px, 5vw, 30px); /* Responsive spacing between icons */
-    align-items: center; /* Vertically center icons */
-    margin-left: auto; /* Push the nav-section to the right */
-    flex-shrink: 0; /* Prevent the nav-section from shrinking */
-    padding-left: 5px; /* 5px from the left border of nav-section */
-    padding-right: 5px; /* 5px from the right border of nav-section */
+    gap: clamp(10px, 5vw, 30px);
+    align-items: center; 
+    margin-left: auto; 
+    flex-shrink: 0; 
+    padding-left: 5px; 
+    padding-right: 5px;
 }
 
-/* Header-specific nav icons */
-.about-header-nav-link {
+.header-nav-link {
     display: flex;
-    flex-direction: column; /* Icon above text */
+    flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: var(--text-color);
@@ -244,188 +235,401 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px; /* Ensure the link has a clickable area */
+    padding: 10px;
     font-family: inherit;
 }
 
-.about-header-nav-icon {
-    width: clamp(15px, 10vw, 60px); /* Adjust size as needed */
-    height: clamp(15px, 10vw, 60px); /* Adjust size as needed */
+.header-nav-icon {
+    width: clamp(15px, 10vw, 60px);
+    height: clamp(15px, 10vw, 60px); 
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--icon-color);
     border-radius: 50%;
-    font-size: clamp(24px, 6vw, 36px); /* Increase icon font size */
-    margin-bottom: 5px; /* Space between icon and text */
+    font-size: clamp(24px, 6vw, 36px); 
+    margin-bottom: 5px; 
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.about-header-nav-link:hover .about-header-nav-icon,
-.about-header-nav-link:hover span {
-    transform: scale(1.1); /* Scale up the icon and text */
+.header-nav-link:hover .header-nav-icon,
+.header-nav-link:hover span {
+    transform: scale(1.1); 
 }
 
-.about-header-nav-link span {
+.header-nav-link span {
     font-size: clamp(14px, 2vw, 20px);
     font-family: inherit;
     font-weight: bold;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* About Page Content */
-
-.about-content h2 {
-    font-size: clamp(30px, 6vw, 75px);
-    color: var(--bg-color);
-    margin: 0;
-    text-shadow: 
-        1.5px 1.5px 0 var(--text-color),
-        -1.5px -1.5px 0 var(--text-color), 
-        1.5px -1.5px 0 var(--text-color), 
-        -1.5px 1.5px 0 var(--text-color);
-}
-
-.about-content {
-    padding: 20px 10%; /* Add padding to the sides */
-    background-color: var(--bg-color); /* Use the same background color */
-    color: var(--text-color); /* Use the same text color */
-}
-
-.about-content p {
-    font-size: clamp(16px, 2vw, 24px); /* Responsive font size */
-    line-height: 1.6; /* Improve readability */
-}
-
-/* About Me Container */
 .about-me-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto; /* Center the container */
+    max-width: 1200px;
+    margin: 0 auto; 
 }
 
-/* About Me Heading */
 .about-me-container h2 {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
-    margin: 0;
-    -webkit-text-stroke: 1px var(--text-color); /* Outline width and color */
+    margin: 10;
+    -webkit-text-stroke: 1px var(--text-color);
     text-shadow: 
         1px 1px 0 var(--text-color),
         -1px -1px 0 var(--text-color), 
         1px -1px 0 var(--text-color), 
-        -1px 1px 0 var(--text-color); /* Softer fallback */
+        -1px 1px 0 var(--text-color); 
 }
 
-/* About Me Content (Image + Text) */
 .about-me-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between image and text */
+    gap: 20px; 
     width: 100%;
 }
 
-/* Image Styling */
 .about-me-image {
     width: 100%;
-    max-width: 300px; /* Adjust as needed */
+    max-width: 300px; 
     height: auto;
-    border-radius: 10px; /* Optional: Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Text Styling */
 .about-me-content p {
     font-size: clamp(16px, 2vw, 18px);
     line-height: 1.6;
     margin: 0;
-    text-align: left; /* Align text to the left */
+    text-align: left; 
 }
 
 /* Responsive Layout for Wider Screens */
 @media (min-width: 768px) {
     .about-me-content {
-        flex-direction: row; /* Side by side on wider screens */
-        align-items: flex-start; /* Align items to the top */
-        text-align: left; /* Align text to the left */
+        flex-direction: row; 
+        align-items: flex-start; 
+        text-align: left; 
     }
 
     .about-me-image {
-        max-width: 40%; /* Adjust as needed */
-        margin-right: 20px; /* Space between image and text */
+        max-width: 40%; 
+        margin-right: 20px; 
     }
 }
 
-/*Footer*/
 .footer {
-    background-color: var(--bg-color); /* Use the same background color as the page */
-    padding: 20px 0; /* Add some padding */
-    text-align: center; /* Center the content */
-    margin-top: auto; /* Push the footer to the bottom */
+    background-color: var(--bg-color); 
+    padding: 20px 0; 
+    text-align: center; 
+    margin-top: auto; 
 }
 
 .footer-content {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Align items vertically */
-    gap: clamp(10px, 10vw, 200px); /* Dynamic spacing between social icons and desc-image-container */
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto; /* Center the container */
-    padding: 0 20px; /* Add some padding on the sides */
+    justify-content: center; 
+    align-items: center; 
+    gap: clamp(10px, 10vw, 200px); 
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 0 20px; 
 }
 
-/* Social media icons */
 .social-icons {
     display: flex;
-    gap: 15px; /* Space between icons */
+    gap: 15px; 
 }
 
 .social-icons a {
     text-decoration: none;
-    font-size: clamp(12px, 5vw, 24px); /* Icon size */
-    color: var(--social-color); /* Default color */
+    font-size: clamp(12px, 5vw, 24px); 
+    color: var(--social-color);
     width: clamp(20px, 7vw, 40px);
     height: clamp(20px, 7vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Makes circular */
+    border-radius: 50%; 
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* Different colors for each icon */
 .social-icons a:nth-child(1) { background-color: #ADE2FF; } /* LinkedIn */
-.social-icons a:nth-child(2) { background-color: #A3A3A3; }    /* GitHub */
+.social-icons a:nth-child(2) { background-color: #A3A3A3; } /* GitHub */
 .social-icons a:nth-child(3) { background-color: #F2BAD3; } /* Instagram */
 .social-icons a:nth-child(4) { background-color: #F7A4A1; } /* Gmail */
-.social-icons a:nth-child(5) { background-color: #FAC898; }
+.social-icons a:nth-child(5) { background-color: #FAC898; } /* Resume */
 
 .social-icons a:hover {
     transform: scale(1.1);
 }
 
-/* Desc Image Container */
 .footer-desc-image-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 5px; /* Space between text and image */
+    align-items: center; 
+    gap: 5px; 
 }
 
-/* Desc Text */
 .footer-desc-text {
-    font-size: clamp(8px, 2vw, 16px); /* Adjust font size as needed */
+    font-size: clamp(8px, 2vw, 16px);
     color: var(--text-color);
-    text-align: right; /* Align text to the right */
-    font-style: italic; /* Optional: Add style to the text */
-    white-space: nowrap; /* Prevent text from wrapping */
-    margin: 0; /* Remove default margin */
+    text-align: right; 
+    font-style: italic;
+    white-space: nowrap; 
+    margin: 0; 
     padding: 5px;
 }
 
 .footer-desc-text em {
-    font-style: normal; /* Make "love" and "matcha" italic */
+    font-style: normal; 
+}
+
+.work-content {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.work-content h2 {
+    font-size: clamp(30px, 6vw, 75px);
+    color: var(--bg-color);
+    margin: 10;
+    -webkit-text-stroke: 1px var(--text-color); 
+    text-align: center;
+    text-shadow: 
+        1px 1px 0 var(--text-color),
+        -1px -1px 0 var(--text-color), 
+        1px -1px 0 var(--text-color), 
+        -1px 1px 0 var(--text-color); 
+}
+
+.resume-link {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%; 
+}
+
+.resume-bubble {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--text-color); 
+    padding: 10px 20px;
+    border-radius: 25px; 
+    text-decoration: none;
+    color: var(--bg-color);
+    font-size: clamp(18px, 2.5vw, 32px);
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.resume-bubble span {
+    margin-right: 10px;
+}
+
+.resume-bubble i {
+    font-size: clamp(18px, 2.5vw, 32px);
+    color: var(--bg-color);
+}
+
+.resume-bubble:hover {
+    transform: scale(1.05);
+}
+
+.work-content-heading {
+    font-size: clamp(30px, 6vw, 60px);
+    color: var(--text-color);
+    margin: 0px;
+    padding-top: 10px;
+}
+
+.work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.work-entry {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.company-logo {
+    width: clamp(70px, 8vw, 150px); 
+    padding: 10px;
+    text-align: center;
+}
+
+.company-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.company-logo a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.project-logo {
+    flex: clamp(100px, 5vw, 150px); 
+    padding: 10px;
+    text-align: center;
+}
+
+.project-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; 
+}
+
+.project-logo a {
+    display: block;
+    margin-top: 10px;
+    color: var(--text-color);
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.work-details {
+    flex: 1;
+}
+
+.work-details h3 {
+    font-size: clamp(20px, 4vw, 36px);
+    margin: 0 0 10px 0;
+}
+
+.work-details h3 a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.work-details .time-frame {
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+}
+
+.work-details .job-description {
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.work-details .key-skills {
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.play-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.play-title {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: clamp(24px, 3vw, 48px);
+}
+
+.play-nav-section {
+    display: flex;
+    gap: 20px;
+}
+
+.play-header-nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: clamp(16px, 2vw, 24px);
+}
+
+.play-content {
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.play-intro {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -20px;
+}
+
+.play-intro h2 {
+    font-size: clamp(30px, 6vw, 75px);
+    color: var(--bg-color);
+    margin: 10;
+    -webkit-text-stroke: 1px var(--text-color);
+    text-shadow: 
+        1px 1px 0 var(--text-color),
+        -1px -1px 0 var(--text-color), 
+        1px -1px 0 var(--text-color), 
+        -1px 1px 0 var(--text-color); 
+}
+
+.play-intro p {
+    font-size: clamp(16px, 2vw, 24px);
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.image-collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+}
+
+.image-cell {
+    position: relative;
+    width: 100%;
+    padding-top: 125%; 
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.image-container:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
