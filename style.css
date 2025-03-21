@@ -3,12 +3,14 @@
     --text-color: #BF8988;
     --icon-color: #F8F4F2;
     --image: url('images/lightmode.png');
+    --social-color: #F8F4F2;
 }
 .dark-mode {
     --bg-color: #695B4F;
     --text-color: #C4A49E;
     --icon-color: #5D5146;
     --image: url('images/darkmode.png');
+    --social-color: #5D5146;
 }
 
 body {
@@ -369,17 +371,27 @@ body {
     margin-top: auto; /* Push the footer to the bottom */
 }
 
+.footer-content {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Align items vertically */
+    gap: clamp(10px, 10vw, 200px); /* Dynamic spacing between social icons and desc-image-container */
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add some padding on the sides */
+}
+
 /* Social media icons */
 .social-icons {
     display: flex;
-    justify-content: center; /* Center the icons horizontally */
+    /*justify-content: center; /* Center the icons horizontally */
     gap: 15px; /* Space between icons */
 }
 
 .social-icons a {
     text-decoration: none;
     font-size: 24px; /* Icon size */
-    color: white; /* Default color */
+    color: var(--social-color); /* Default color */
     width: 40px;
     height: 40px;
     display: flex;
@@ -397,4 +409,26 @@ body {
 
 .social-icons a:hover {
     transform: scale(1.1);
+}
+
+/* Desc Image Container */
+.footer-desc-image-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 5px; /* Space between text and image */
+}
+
+/* Desc Text */
+.footer-desc-text {
+    font-size: clamp(8px, 2vw, 16px); /* Adjust font size as needed */
+    color: var(--text-color);
+    text-align: right; /* Align text to the right */
+    font-style: italic; /* Optional: Add style to the text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    margin: 0; /* Remove default margin */
+    padding: 5px;
+}
+
+.footer-desc-text em {
+    font-style: normal; /* Make "love" and "matcha" italic */
 }
