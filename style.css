@@ -216,6 +216,8 @@ body {
     border-radius: 50%;
     font-size: clamp(18px, 5vw, 30px);
     margin-top: 5px;
+    line-height: 1;
+    text-align: center;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
