@@ -633,6 +633,7 @@ body {
     color: var(--text-color);
     max-width: 800px;
     margin: 0 auto;
+    padding-bottom: 20px;
 }
 
 .image-collage {
