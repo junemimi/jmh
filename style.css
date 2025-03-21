@@ -158,6 +158,48 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
+    
+    /* Initial hidden state */
+    opacity: 0;
+    transform: translateY(30px); /* Move the icons below the screen initially */
+    animation: bounceIn 1s ease-out forwards; /* Apply bounce animation */
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start below the screen */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10px); /* Move slightly upwards */
+    }
+    70% {
+        transform: translateY(5px); /* Move down a little */
+    }
+    90% {
+        transform: translateY(-3px); /* Move up slightly */
+    }
+    100% {
+        opacity: 1; /* Ensure the opacity stays 1 */
+        transform: translateY(0); /* Settle into the final position */
+    }
+}
+
+.home-nav-link:nth-child(1) {
+    animation-delay: 0.2s; /* Delay for the first icon */
+}
+
+.home-nav-link:nth-child(2) {
+    animation-delay: 0.4s; /* Delay for the second icon */
+}
+
+.home-nav-link:nth-child(3) {
+    animation-delay: 0.6s; /* Delay for the third icon */
+}
+
+.home-nav-link:nth-child(4) {
+    animation-delay: 0.8s; /* Delay for the fourth icon */
 }
 
 .home-nav-icon {
