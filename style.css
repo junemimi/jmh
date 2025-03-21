@@ -386,7 +386,7 @@ body {
 
 .social-icons a {
     text-decoration: none;
-    font-size: 20px; /* Icon size */
+    font-size: clamp(12px, 5vw, 24px); /* Icon size */
     color: var(--social-color); /* Default color */
     width: clamp(20px, 7vw, 40px);
     height: clamp(20px, 7vw, 40px);
