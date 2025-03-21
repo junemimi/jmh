@@ -47,10 +47,13 @@ body {
 }
 
 .home h2 {
+    background: linear-gradient(45deg, #BF8988, #C4A49E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: clamp(30px, 6vw, 75px);
-    color: var(--bg-color);
+    font-weight: 300;
+    text-align: center;
     margin: 0;
-    -webkit-text-stroke: 2px var(--text-color);
 }
 
 .bottom-section {
@@ -316,17 +319,14 @@ body {
 }
 
 .about-me-container h2 {
+    background: linear-gradient(45deg, #BF8988, #C4A49E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: clamp(30px, 6vw, 75px);
-    color: var(--bg-color);
+    font-weight: 300;
+    text-align: center;
     margin: 10;
     margin-top: 20px;
-    -webkit-text-stroke: 1px var(--text-color); 
-    text-align: center;
-    text-shadow: 
-        1px 1px 0 var(--text-color),
-        -1px -1px 0 var(--text-color), 
-        1px -1px 0 var(--text-color), 
-        -1px 1px 0 var(--text-color); 
 }
 
 .about-me-content {
@@ -441,16 +441,12 @@ body {
 }
 
 .work-content h2 {
+    background: linear-gradient(45deg, #BF8988, #C4A49E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: clamp(30px, 6vw, 75px);
-    color: var(--bg-color);
-    margin: 10;
-    -webkit-text-stroke: 1px var(--text-color); 
+    font-weight: 300;
     text-align: center;
-    text-shadow: 
-        1px 1px 0 var(--text-color),
-        -1px -1px 0 var(--text-color), 
-        1px -1px 0 var(--text-color), 
-        -1px 1px 0 var(--text-color); 
 }
 
 .resume-link {
@@ -622,16 +618,12 @@ body {
 }
 
 .play-intro h2 {
+    background: linear-gradient(45deg, #BF8988, #C4A49E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: clamp(30px, 6vw, 75px);
-    color: var(--bg-color);
-    margin: 10;
-    -webkit-text-stroke: 1px var(--text-color); 
+    font-weight: 300;
     text-align: center;
-    text-shadow: 
-        1px 1px 0 var(--text-color),
-        -1px -1px 0 var(--text-color), 
-        1px -1px 0 var(--text-color), 
-        -1px 1px 0 var(--text-color); 
 }
 
 .play-intro p {
@@ -682,4 +674,8 @@ body {
 .image-container:hover {
     transform: scale(1.05); 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+* {
+    font-family: 'Work Sans', sans-serif;
 }
