@@ -256,7 +256,7 @@ body {
 
 .title h1 {
     margin: 0; 
-    font-size: clamp(24px, 3vw, 48px);
+    font-size: clamp(20px, 3vw, 48px);
     color: inherit; 
 }
 
