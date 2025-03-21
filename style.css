@@ -51,11 +51,7 @@ body {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
     margin: 0;
-    text-shadow: 
-        1.5px 1.5px 0 var(--text-color),
-        -1.5px -1.5px 0 var(--text-color), 
-        1.5px -1.5px 0 var(--text-color), 
-        -1.5px 1.5px 0 var(--text-color);
+    -webkit-text-stroke: 2px var(--text-color); /* Outline width and color */
 }
 
 .bottom-section {
@@ -315,12 +311,13 @@ body {
 .about-me-container h2 {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
-    margin: 0 0 20px 0; /* Add some spacing below the heading */
+    margin: 0;
+    -webkit-text-stroke: 1px var(--text-color); /* Outline width and color */
     text-shadow: 
-        1.5px 1.5px 0 var(--text-color),
-        -1.5px -1.5px 0 var(--text-color), 
-        1.5px -1.5px 0 var(--text-color), 
-        -1.5px 1.5px 0 var(--text-color);
+        1px 1px 0 var(--text-color),
+        -1px -1px 0 var(--text-color), 
+        1px -1px 0 var(--text-color), 
+        -1px 1px 0 var(--text-color); /* Softer fallback */
 }
 
 /* About Me Content (Image + Text) */
@@ -384,16 +381,15 @@ body {
 /* Social media icons */
 .social-icons {
     display: flex;
-    /*justify-content: center; /* Center the icons horizontally */
     gap: 15px; /* Space between icons */
 }
 
 .social-icons a {
     text-decoration: none;
-    font-size: 24px; /* Icon size */
+    font-size: 20px; /* Icon size */
     color: var(--social-color); /* Default color */
-    width: 40px;
-    height: 40px;
+    width: clamp(20px, 7vw, 40px);
+    height: clamp(20px, 7vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,6 +402,7 @@ body {
 .social-icons a:nth-child(2) { background-color: #A3A3A3; }    /* GitHub */
 .social-icons a:nth-child(3) { background-color: #F2BAD3; } /* Instagram */
 .social-icons a:nth-child(4) { background-color: #F7A4A1; } /* Gmail */
+.social-icons a:nth-child(5) { background-color: #FAC898; }
 
 .social-icons a:hover {
     transform: scale(1.1);
