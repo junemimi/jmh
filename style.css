@@ -207,8 +207,8 @@ body {
 }
 
 .home-nav-icon {
-    width: clamp(18px, 7vw, 50px);
-    height: clamp(18px, 7vw, 50px);
+    width: clamp(20px, 8vw, 50px);
+    height: clamp(20px, 8vw, 50px);
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -221,7 +221,7 @@ body {
 }
 
 .home-nav-link span {
-    font-size: clamp(10px, 2vw, 16px);
+    font-size: clamp(8px, 2vw, 16px);
     font-weight: bold;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
