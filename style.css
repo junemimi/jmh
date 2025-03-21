@@ -44,8 +44,7 @@ body {
     font-size: clamp(60px, 12vw, 150px);
     color: var(--text-color);
     margin: 0;
-    margin-left: 15px;
-    margin-right: 15px;
+    padding: 0 5vw;
 }
 
 .home h2 {
