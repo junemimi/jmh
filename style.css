@@ -57,7 +57,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 25vw;
     margin-top: 5px;
 }
 
@@ -277,7 +277,9 @@ body {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
     margin: 10;
-    -webkit-text-stroke: 1px var(--text-color);
+    margin-top: 20px;
+    -webkit-text-stroke: 1px var(--text-color); 
+    text-align: center;
     text-shadow: 
         1px 1px 0 var(--text-color),
         -1px -1px 0 var(--text-color), 
@@ -299,6 +301,8 @@ body {
     height: auto;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .about-me-content p {
@@ -306,6 +310,8 @@ body {
     line-height: 1.6;
     margin: 0;
     text-align: left; 
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 /* Responsive Layout for Wider Screens */
@@ -564,19 +570,21 @@ body {
     padding-right: 40px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    margin-top: 0px;
 }
 
 .play-intro {
     text-align: center;
     margin-bottom: 40px;
-    margin-top: -20px;
+    margin-top: -40px;
 }
 
 .play-intro h2 {
     font-size: clamp(30px, 6vw, 75px);
     color: var(--bg-color);
     margin: 10;
-    -webkit-text-stroke: 1px var(--text-color);
+    -webkit-text-stroke: 1px var(--text-color); 
+    text-align: center;
     text-shadow: 
         1px 1px 0 var(--text-color),
         -1px -1px 0 var(--text-color), 
@@ -585,8 +593,8 @@ body {
 }
 
 .play-intro p {
-    font-size: clamp(16px, 2vw, 24px);
-    line-height: 1.6;
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.5;
     color: var(--text-color);
     max-width: 800px;
     margin: 0 auto;
