@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>June Mi Hong</title>
-   <link rel="stylesheet" href="style.css">
-   <link rel="icon" type="image/png" href="images/favicons/matcha.ico">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-   <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June Mi Hong</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicons/matcha.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -45,9 +44,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- Louie's own section: he roams on the left, his menu sits on the right (louie.js) -->
+        <div class="home-louie">
+            <div class="louie-yard"></div>
+            <nav class="louie-menu" aria-label="Play with Louie">
+                <button type="button" class="louie-menu-item" data-louie="bed">send louie to bed</button>
+                <button type="button" class="louie-menu-item" data-louie="feed">feed louie</button>
+                <button type="button" class="louie-menu-item" data-louie="fetch">play fetch</button>
+                <button type="button" class="louie-menu-item" data-louie="zoomies">zoomies!</button>
+                <button type="button" class="louie-menu-item" data-louie="wake" hidden>wake up louie</button>
+            </nav>
+        </div>
     </section>
-    
+
     <script src="script.js"></script>
+    <script src="louie.js"></script>
 
 </body>
 </html>

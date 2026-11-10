@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>About | June Mi Hong</title>
-   <link rel="stylesheet" href="style.css">
-   <link rel="icon" type="image/png" href="images/favicons/hibiscus.ico">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-   <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | June Mi Hong</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicons/hibiscus.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="header">
-        <a href='index.html' class="title"><h1>june mi hong</h1>
+        <a href="index.html" class="title"><h1>june mi hong</h1></a>
         <div class="nav-section">
             <a href="about.html" class="header-nav-link">
                 <div class="header-nav-icon">🧘🏻‍♀️</div>
@@ -36,23 +35,23 @@
 
     <section class="about-content">
         <div class="about-me-container">
-            <h2>About Me</h2>
             <div class="about-me-content">
-                <img src="images/me.png" alt="Photo of me in Chicago!" class="about-me-image">
+                <div class="about-me-photos">
+                    <button class="about-photo is-front" type="button" aria-label="Show next photo">
+                        <img src="images/grad.jpg" alt="Photo of me in my cap and gown at my UW graduation" class="about-me-image">
+                    </button>
+                    <button class="about-photo is-back" type="button" aria-label="Show next photo">
+                        <img src="images/louie.jpg" alt="My puppy Louie held up in front of a mountain view" class="about-me-image">
+                    </button>
+                </div>
                 <p>
-                    Hi! I’m June – a software engineer 👩🏻‍💻, creative problem solver 💭, and lifelong learner 🧠. With a BS in Informatics from the University of Washington, I’ve developed a deep appreciation for the entire tech process, from user research and planning to design, development, and testing. While I specialize in Swift and iOS/macOS development, I’m always excited to be involved in all aspects of a project, especially when it comes to design!
+                    Hi, I'm June!
                     <br>
                     <br>
-                    I love leveraging my skills to create meaningful and impactful tech solutions that solve real problems and improve lives. My work experience spans software development and data science, and I’m always looking for new ways to grow, learn, and give back to the community.
+                    I love collaborating, creating, and expanding. To me, being a software engineer means so much more than just accepting tasks and writing the code. Teaming up with others, adapting to rapidly evolving technology, diving into customer needs, and making thoughtful design decisions are what inspire me to push forward each day. My goal is to create products that truly help people and make an impact, and I am always working towards a multi-faceted approach that goes beyond coding skills and ventures into product and design as well.
                     <br>
                     <br>
-                    My friends describe me as enthusiastic, observant, ambitious, and bold. I thrive on discovering new things, stepping outside my comfort zone, and embracing new challenges and adventures!
-                    <br>
-                    <br>
-                    Outside of work, I’m love baking 🍰, photography 📸, traveling ✈️, staying active 💪, and listening to music 🎶. During my free time, you can probably find me hanging out with friends or filming a baking video.
-                    <br>
-                    <br>
-                    Thanks for checking out my website and I hope you enjoy! 🌺
+                    Outside of the office, you might find me teaching my puppy Louie some new tricks, picking up a new outdoor hobby each season ⛳️🧗‍♀️🏕️⛷️, decorating my apartment (again and again), catching a flight, or tinkering out a new baking recipe.
                 </p>
             </div>
         </div>
@@ -61,19 +60,23 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="social-icons">
-                <a href="https://linkedin.com/in/junemihong" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/junemimi" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:junemihong@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                <a href="JuneHongResume.pdf" target="_blank"><i class="fas fa-file-lines"></i></a>
+                <a href="https://linkedin.com/in/junemihong" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://github.com/junemimi" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="mailto:junemihong@gmail.com" aria-label="Email"><i class="far fa-envelope" aria-hidden="true"></i></a>
+                <a href="JuneHongResume.pdf" target="_blank" aria-label="Resume (PDF)"><i class="fas fa-file-lines" aria-hidden="true"></i></a>
             </div>
-            <div class="footer-desc-image-container">
+            <!-- Louie roams here (louie.js) -->
+            <div class="louie-yard"></div>
+            <div class="footer-signature">
                 <span class="footer-desc-text">made with love <em>🩷</em><br>and matcha <em>🍵</em></span>
-                <div class="image"></div>
+                <div class="image" role="img" aria-label="Drawing of me"></div>
             </div>
         </div>
     </footer>
 
+
     <script src="script.js"></script>
+    <script src="louie.js"></script>
 
 </body>
 </html>
