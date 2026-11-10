@@ -5,22 +5,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Apply the mode in one step. Per-element color transitions are switched
     // off for this moment so nothing (header, sections, bubbles) lags behind.
+    const root = document.documentElement;
     function setMode(dark) {
-        const root = document.documentElement;
         root.classList.add("theme-switching");
-        body.classList.toggle("dark-mode", dark);
+        root.classList.toggle("dark-mode", dark);
         modeIcon.textContent = dark ? "🌙" : "☀️";
         getComputedStyle(body).backgroundColor; // force the new colors to apply now
         root.classList.remove("theme-switching");
     }
 
-    // Check for saved mode in local storage
-    if (localStorage.getItem("darkMode") === "enabled") {
-        setMode(true);
+    // Default to the device's light/dark setting until the mode button is
+    // used; after that the saved choice wins
+    const deviceDark = window.matchMedia("(prefers-color-scheme: dark)");
+    function savedMode() {
+        return localStorage.getItem("darkMode");
     }
+    setMode(savedMode() ? savedMode() === "enabled" : deviceDark.matches);
+
+    // Follow the device if it switches (e.g. automatic dark mode at sunset)
+    deviceDark.addEventListener("change", function (event) {
+        if (!savedMode()) setMode(event.matches);
+    });
 
     modeButton.addEventListener("click", function () {
-        const dark = !body.classList.contains("dark-mode");
+        const dark = !root.classList.contains("dark-mode");
         localStorage.setItem("darkMode", dark ? "enabled" : "disabled");
 
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -35,7 +43,21 @@ document.addEventListener("DOMContentLoaded", function () {
     setupCarousel(document.querySelector(".carousel"));
     setupPhotoStack(document.querySelector(".about-me-photos"));
     setupCompactHeader(document.querySelector(".header"));
+    setupHomeLouieRoom(document.querySelector(".home-louie"));
 });
+
+// Home page: tell the CSS how tall Louie's row is (it is pinned to the
+// bottom, outside the layout) so the email row never runs into it.
+function setupHomeLouieRoom(row) {
+    if (!row) return;
+    const home = row.closest(".home");
+    function update() {
+        home.style.setProperty("--louie-row", Math.ceil(row.getBoundingClientRect().height) + "px");
+    }
+    update();
+    if (window.ResizeObserver) new ResizeObserver(update).observe(row);
+    else window.addEventListener("resize", update);
+}
 
 // Subpage header: pinned to the top, and slims down once the page is
 // scrolled. The page is padded by the header's full height so the

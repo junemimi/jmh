@@ -118,7 +118,7 @@
         function mouthX() { return x + width * (direction > 0 ? MOUTH_X : 1 - MOUTH_X); }
 
         function measure() {
-            scale = smallScreen.matches ? 1.5 : 2.25;
+            scale = smallScreen.matches ? 1.25 : 1.9;
             width = Math.round(FRAME_W * scale);
             // His box ends at his feet; the sprite is taller and the empty
             // rows below his feet are clipped, so he stands on the ground

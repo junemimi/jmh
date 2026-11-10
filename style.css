@@ -56,15 +56,35 @@ body {
     position: relative;
 }
 
-/* Auto margins center the name block in the space above Louie's row,
-   which then sits on the bottom edge of the window */
+/* Three bands: nav | name | role + email. The outer bands share the leftover
+   height equally, so the name itself sits in the middle of the window
+   (or of the space above Louie's row on very short windows). */
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex: 1; /* full height; width stays the name's, so nav and email line up with it */
     position: relative;
-    margin: auto 0;
+}
+
+/* Room is kept under the email row for Louie's row (--louie-row, measured
+   in script.js). With space to spare both outer rows stay equal; on a
+   tight window this row needs more, so the name moves up just enough
+   to stop the two from overlapping. */
+.home-below {
+    flex: 1 1 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The reserved room: sets how small this band may get, without adding
+   to its even share of the height */
+.home-below::after {
+    content: "";
+    flex: none;
+    height: calc(var(--louie-row, 0px) + 12px);
 }
 
 .home h1 {
@@ -157,8 +177,9 @@ body {
 .home-nav-section {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end; /* bottom of the top band, right above the name */
     align-self: stretch;
+    flex: 1 1 0;
     padding: 0 4%;
     margin-bottom: calc(var(--title) * 0.08);
     z-index: 10;
@@ -853,7 +874,7 @@ body.has-fixed-header .header {
    visible so hearts, bubbles and a dragged Louie can rise above it. */
 .louie-yard {
     position: relative;
-    min-height: 104px; /* one Louie tall (46px frame x 2.25) */
+    min-height: 88px; /* one Louie tall (46px frame x 1.9) */
 }
 
 /* Home page: Louie's own row under the email bubble, menu on the right */
@@ -877,6 +898,10 @@ body.has-fixed-header .header {
         position: static;
         align-self: stretch;
         margin-top: calc(var(--title) * 0.15);
+    }
+
+    .home-below::after {
+        display: none; /* his row is in the flow here */
     }
 }
 
@@ -992,7 +1017,7 @@ body.has-fixed-header .header {
 
 @media (max-width: 600px) {
     .louie-yard {
-        min-height: 69px; /* 46px frame x 1.5 on phones */
+        min-height: 58px; /* 46px frame x 1.25 on phones */
     }
 
     .home-louie {
@@ -1108,4 +1133,83 @@ body.has-fixed-header .header {
     .louie-bubble {
         animation: none;
     }
+}
+
+/* Loading screen (loader.js): page content stays hidden until every image
+   has loaded, while Louie sits next to a typed-out "loading..." */
+html.is-loading body > :not(.page-loader) {
+    visibility: hidden;
+}
+
+/* The home nav's bounce-in waits for the page to be shown */
+html.is-loading .home-nav-link {
+    animation-play-state: paused;
+}
+
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* his frame already has empty pixels on the right */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* Only shows up if loading takes a moment, so quick visits don't flash */
+    animation: page-loader-in 0.3s ease 0.2s backwards;
+}
+
+.page-loader.is-done {
+    animation: page-loader-out 0.35s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes page-loader-in {
+    from { opacity: 0; }
+}
+
+@keyframes page-loader-out {
+    to { opacity: 0; }
+}
+
+.page-loader-louie {
+    width: 122px;  /* 68px frame x 1.8 */
+    height: 83px;
+    image-rendering: pixelated;
+}
+
+.page-loader-text {
+    font-family: Georgia;
+    font-size: clamp(22px, 4vw, 34px);
+    min-width: 6.2em; /* room for the whole word, so Louie doesn't slide as it types */
+    white-space: pre;
+}
+
+/* Typewriter cursor */
+.page-loader-text::after {
+    content: "|";
+    margin-left: 2px;
+    font-weight: 300;
+    animation: page-loader-cursor 1s steps(1) infinite;
+}
+
+@keyframes page-loader-cursor {
+    50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-loader,
+    .page-loader-text::after {
+        animation: none;
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
