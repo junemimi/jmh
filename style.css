@@ -1,47 +1,74 @@
 :root {
     --bg-color: #F1E9E4;
-    --text-color: #BF8988;
+    --text-color: #695B4F;
     --icon-color: #F8F4F2;
     --social-color: #F8F4F2;
     --image: url('images/lightmode.png');
 }
 .dark-mode {
     --bg-color: #695B4F;
-    --text-color: #C4A49E;
+    --text-color: #F1E9E4;
     --icon-color: #5D5146;
     --social-color: #5D5146;
     --image: url('images/darkmode.png');
 }
 
+/* The page is always at least one window tall, so the footer (and Louie's
+   ground inside it) sits on the bottom edge of the browser on short pages.
+   dvh follows the visible height on phones as the address bar shows/hides. */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
     padding: 0;
-}
-
-.home {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* Light/dark switch: every element changes at the same moment, and the
+   whole page crossfades together (see setMode in script.js) */
+.theme-switching,
+.theme-switching * {
+    transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+}
+
+/* Home page: everything is sized from --title (the name's font size),
+   so the bubbles, labels, role and footer stay in proportion to it.
+   The title scales with both width and height, so it fits wide, short
+   and phone screens. */
+.home {
+    --title: clamp(44px, min(12vw, 17vh), 150px);
+    --bubble: max(44px, calc(var(--title) * 0.58));
+    --label: max(12px, calc(var(--title) * 0.14));
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    flex: 1;
     text-align: center;
     position: relative;
 }
 
+/* Auto margins center the name block in the space above Louie's row,
+   which then sits on the bottom edge of the window */
 .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-top: 60px;
+    margin: auto 0;
 }
 
 .home h1 {
-    font-size: clamp(45px, 12vw, 150px);
+    font-size: var(--title);
     color: var(--text-color);
     margin: 0;
     padding: 0 2vw;
@@ -49,10 +76,8 @@ body {
 }
 
 .home h2 {
-    background: linear-gradient(45deg, #BF8988, #C4A49E);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: clamp(30px, 6vw, 75px);
+    color: var(--text-color);
+    font-size: calc(var(--title) * 0.5);
     font-weight: 300;
     text-align: center;
     margin: 0;
@@ -60,10 +85,11 @@ body {
 
 .bottom-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 25vw;
-    margin-top: 5px;
+    align-self: stretch;
+    padding: 0 8%;
+    margin-top: calc(var(--title) * 0.12);
 }
 
 .email-link {
@@ -72,21 +98,20 @@ body {
     align-items: center;
     text-decoration: none;
     color: var(--text-color);
-    font-size: clamp(10px, 2vw, 20px);
     transition: all 0.3s ease;
 }
 
 .email-icon {
-    width: clamp(20px, 8vw, 50px);
-    height: clamp(20px, 8vw, 50px);
+    width: var(--bubble);
+    height: var(--bubble);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--icon-color);
     border-radius: 50%;
-    font-size: clamp(18px, 5vw, 30px);
+    font-size: calc(var(--bubble) * 0.55);
+    line-height: 1;
     margin-bottom: 5px;
-    margin-right: 40%;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
@@ -96,27 +121,25 @@ body {
 }
 
 .email-link span {
-    font-size: clamp(10px, 2vw, 16px);
+    font-size: var(--label);
     font-weight: bold;
     transition: transform 0.2s ease, background-color 0.3s ease;
-    margin-right: 40%;
+}
+
+/* Footer note + doodle on the home page scale with the title too */
+.home .footer-desc-text {
+    font-size: max(11px, calc(var(--title) * 0.14));
+}
+
+.home .image {
+    width: max(37px, calc(var(--title) * 0.5));
+    height: max(49px, calc(var(--title) * 0.66));
 }
 
 .desc-image-container {
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-.desc-text {
-    font-size: clamp(8px, 2vw, 16px);
-    color: var(--text-color);
-    padding-left: 30%;
-    padding-bottom: 20%;
-    padding-top: 5px;
-    text-align: right;
-    font-style: italic;
-    white-space: nowrap;
 }
 
 .image {
@@ -135,19 +158,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    top: -70px;
-    left: 0;
-    right: 0;
-    padding: 0 10%;
+    align-self: stretch;
+    padding: 0 4%;
+    margin-bottom: calc(var(--title) * 0.08);
     z-index: 10;
-}
-
-.home-nav-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
 }
 
 .home-nav-link {
@@ -157,13 +171,13 @@ body {
     text-decoration: none;
     color: var(--text-color);
     font-family: inherit;
-    font-size: clamp(10px, 2vw, 20px);
+    font-size: var(--label);
     transition: all 0.3s ease;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    
+
     /* Initial hidden state */
     opacity: 0;
     transform: translateY(30px); /* Move the icons below the screen initially */
@@ -208,21 +222,21 @@ body {
 }
 
 .home-nav-icon {
-    width: clamp(20px, 8vw, 50px);
-    height: clamp(20px, 8vw, 50px);
+    width: var(--bubble);
+    height: var(--bubble);
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     background-color: var(--icon-color);
     border-radius: 50%;
-    font-size: clamp(18px, 5vw, 30px);
+    font-size: calc(var(--bubble) * 0.55);
     margin-top: 5px;
     line-height: 1;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .home-nav-link span {
-    font-size: clamp(8px, 2vw, 16px);
+    font-size: var(--label);
     font-weight: bold;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
@@ -237,17 +251,80 @@ body {
     color: var(--bg-color);
 }
 
+/* Stays pinned to the top while the page scrolls (about/work/play).
+   The solid background hides content scrolling underneath it. */
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
-    padding: 15px 15px; 
-    background-color: var(--bg-color); 
-    overflow: hidden; 
+    padding: 15px 15px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    transition: padding 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* With script.js running, the header is fixed instead and the page is
+   padded by its full height (--header-h), so shrinking it never moves
+   the content underneath. */
+body.has-fixed-header {
+    box-sizing: border-box; /* keep min-height at one window */
+    padding-top: var(--header-h, 0px);
+}
+
+body.has-fixed-header .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+/* Slim bar once the page is scrolled: smaller title and icons, labels
+   folded away (still read by screen readers), a hairline underneath. */
+.header.is-compact {
+    padding: 4px 15px;
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--text-color) 20%, transparent);
+}
+
+.header.is-compact .title,
+.header.is-compact .title h1 {
+    font-size: clamp(18px, 2vw, 28px);
+    white-space: nowrap;
+}
+
+.header.is-compact .header-nav-link {
+    padding: 4px 6px;
+}
+
+.header.is-compact .header-nav-icon {
+    width: clamp(28px, 8vw, 40px);
+    height: clamp(28px, 8vw, 40px);
+    font-size: clamp(16px, 4.5vw, 22px);
+    margin-bottom: 0;
+}
+
+.header.is-compact .header-nav-link span {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* Measuring the full height: apply sizes instantly */
+.header.is-measuring,
+.header.is-measuring * {
+    transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header,
+    .header * {
+        transition: none !important;
+    }
 }
 
 .title {
-    text-decoration: none; 
-    color: var(--text-color); 
+    text-decoration: none;
+    color: var(--text-color);
     font-size: clamp(24px, 3vw, 48px);
     height: 40px;
     display: flex;
@@ -257,19 +334,20 @@ body {
 }
 
 .title h1 {
-    margin: 0; 
+    margin: 0;
     font-size: clamp(24px, 3vw, 48px);
-    color: inherit; 
+    color: inherit;
     font-family: Georgia;
+    transition: font-size 0.25s ease;
 }
 
 .nav-section {
     display: flex;
     gap: clamp(10px, 5vw, 30px);
-    align-items: center; 
-    margin-left: auto; 
-    flex-shrink: 0; 
-    padding-left: 5px; 
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 5px;
     padding-right: 5px;
 }
 
@@ -290,27 +368,30 @@ body {
 
 .header-nav-icon {
     width: clamp(15px, 10vw, 60px);
-    height: clamp(15px, 10vw, 60px); 
+    height: clamp(15px, 10vw, 60px);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--icon-color);
     border-radius: 50%;
-    font-size: clamp(24px, 6vw, 36px); 
-    margin-bottom: 5px; 
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    font-size: clamp(24px, 6vw, 36px);
+    margin-bottom: 5px;
+    transition: transform 0.2s ease, background-color 0.3s ease,
+        width 0.25s ease, height 0.25s ease, font-size 0.25s ease, margin 0.25s ease;
 }
 
 .header-nav-link:hover .header-nav-icon,
 .header-nav-link:hover span {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .header-nav-link span {
     font-size: clamp(14px, 2vw, 20px);
     font-family: inherit;
     font-weight: bold;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    max-height: 2em; /* folds to 0 in the slim header */
+    transition: transform 0.2s ease, background-color 0.3s ease,
+        max-height 0.25s ease, opacity 0.2s ease;
 }
 
 .about-me-container {
@@ -319,44 +400,85 @@ body {
     align-items: center;
     text-align: center;
     max-width: 1200px;
-    margin: 0 auto; 
-}
-
-.about-me-container h2 {
-    background: linear-gradient(45deg, #BF8988, #C4A49E);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: clamp(30px, 6vw, 75px);
-    font-weight: 300;
-    text-align: center;
-    margin: 10;
-    margin-top: 20px;
-    font-family: Georgia;
+    margin: 0 auto;
 }
 
 .about-me-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; 
+    gap: 20px;
     width: 100%;
 }
 
+/* Overlapping photo stack: one photo in front, the other peeking out
+   behind it. Clicking swaps them (see setupPhotoStack in script.js).
+   --photo-w is the width of one photo; the stack is a bit wider/taller
+   so the back photo can peek out. */
+.about-me-photos {
+    --photo-w: min(60vw, 280px);
+    position: relative;
+    flex: 0 0 auto;
+    width: calc(var(--photo-w) * 1.3);
+    height: calc(var(--photo-w) * 1.496 + 30px);
+    margin: 10px 40px;
+}
+
+.about-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--photo-w);
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.about-photo.is-front {
+    z-index: 2;
+    transform: rotate(-3deg);
+}
+
+.about-photo.is-back {
+    z-index: 1;
+    transform: translate(30%, 30px) rotate(4deg);
+    filter: brightness(0.85);
+}
+
+.about-photo.is-back:hover {
+    filter: brightness(1);
+}
+
+.about-photo:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+/* Same box for both photos (grad photo's ratio); Louie crops to fit */
 .about-me-image {
+    display: block;
     width: 100%;
-    max-width: 300px; 
     height: auto;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 40px;
-    margin-right: 40px;
+    aspect-ratio: 1048 / 1568;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-photo {
+        transition: none;
+    }
 }
 
 .about-me-content p {
     font-size: clamp(16px, 2vw, 18px);
     line-height: 1.6;
     margin: 0;
-    text-align: left; 
+    text-align: left;
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -364,110 +486,133 @@ body {
 /* Responsive Layout for Wider Screens */
 @media (min-width: 768px) {
     .about-me-content {
-        flex-direction: row; 
-        align-items: flex-start; 
-        text-align: left; 
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
     }
 
-    .about-me-image {
-        max-width: 40%; 
-        margin-right: 20px; 
+    /* Size from the window height so photos and text fit on one screen */
+    .about-me-photos {
+        --photo-w: min(24vw, 320px, calc((100vh - 230px) * 0.6));
+        margin-right: 20px;
     }
 }
 
+/* No bottom padding: Louie's yard is flush with the bottom of the page */
 .footer {
-    background-color: var(--bg-color); 
-    padding: 20px 0; 
-    text-align: center; 
-    margin-top: auto; 
+    background-color: var(--bg-color);
+    padding: 20px 0 0;
+    text-align: center;
+    margin-top: auto;
 }
 
+/* Footer, left to right: link bubbles, Louie's yard filling the middle,
+   then the note + drawing. On narrow screens the yard drops to its own
+   row underneath so Louie still walks along the bottom edge. */
 .footer-content {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    gap: clamp(10px, 10vw, 200px); 
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding: 0 20px; 
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px clamp(16px, 3vw, 40px);
+    padding: 0 20px;
+}
+
+.footer-signature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.footer-signature .footer-desc-text {
+    text-align: right;
+    font-size: clamp(12px, 2vw, 16px); /* stays readable on phones */
+}
+
+.footer-content .social-icons {
+    align-self: center;
+    margin-bottom: 16px;
+}
+
+.footer-content .louie-yard {
+    flex: 1 1 260px;
+}
+
+@media (max-width: 640px) {
+    .footer-content .louie-yard {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .footer-signature {
+        margin-left: auto;
+    }
 }
 
 .social-icons {
     display: flex;
-    gap: 15px; 
+    gap: 15px;
 }
 
 .social-icons a {
     text-decoration: none;
-    font-size: clamp(12px, 5vw, 24px); 
+    font-size: clamp(12px, 5vw, 24px);
     color: var(--social-color);
     width: clamp(20px, 7vw, 40px);
     height: clamp(20px, 7vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; 
+    border-radius: 50%;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .social-icons a:nth-child(1) { background-color: #ADE2FF; }
 .social-icons a:nth-child(2) { background-color: #A3A3A3; }
-.social-icons a:nth-child(3) { background-color: #F2BAD3; } 
+.social-icons a:nth-child(3) { background-color: #F2BAD3; }
 .social-icons a:nth-child(4) { background-color: #F7A4A1; }
 
 .social-icons a:hover {
     transform: scale(1.1);
 }
 
-.footer-desc-image-container {
-    display: flex;
-    align-items: center; 
-    gap: 5px; 
-}
-
 .footer-desc-text {
     font-size: clamp(8px, 2vw, 16px);
     color: var(--text-color);
-    text-align: right; 
+    text-align: right;
     font-style: italic;
-    white-space: nowrap; 
-    margin: 0; 
+    white-space: nowrap;
+    margin: 0;
     padding: 5px;
     font-family: Georgia;
 }
 
 .footer-desc-text em {
-    font-style: normal; 
+    font-style: normal;
 }
 
 .work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 5%;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
-.work-content h2 {
-    background: linear-gradient(45deg, #BF8988, #C4A49E);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: clamp(30px, 6vw, 75px);
-    font-weight: 300;
-    text-align: center;
-    font-family: Georgia;
-}
-
 .resume-link {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    width: 100%; 
+    width: 100%;
 }
 
 .resume-bubble {
     display: inline-flex;
     align-items: center;
-    background-color: var(--text-color); 
+    background-color: var(--text-color);
     padding: 10px 20px;
-    border-radius: 25px; 
+    border-radius: 25px;
     text-decoration: none;
     color: var(--bg-color);
     font-size: clamp(18px, 2.5vw, 32px);
@@ -488,23 +633,6 @@ body {
     transform: scale(1.05);
 }
 
-.work-content-heading {
-    font-size: clamp(30px, 6vw, 60px);
-    color: var(--text-color);
-    margin: 0px;
-    padding-top: 10px;
-}
-
-.work-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .work-entry {
     display: flex;
     gap: 20px;
@@ -513,7 +641,7 @@ body {
 }
 
 .company-logo {
-    width: clamp(70px, 8vw, 150px); 
+    width: clamp(70px, 8vw, 150px);
     padding: 10px;
     text-align: center;
 }
@@ -524,16 +652,8 @@ body {
     border-radius: 10px;
 }
 
-.company-logo a {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: clamp(14px, 2vw, 18px);
-}
-
 .project-logo {
-    flex: clamp(100px, 5vw, 150px); 
+    flex: clamp(100px, 5vw, 150px);
     padding: 10px;
     text-align: center;
 }
@@ -541,7 +661,7 @@ body {
 .project-logo img {
     width: 100%;
     height: auto;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .project-logo a {
@@ -583,32 +703,6 @@ body {
     margin: 0;
 }
 
-.play-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-.play-title {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: clamp(24px, 3vw, 48px);
-}
-
-.play-nav-section {
-    display: flex;
-    gap: 20px;
-}
-
-.play-header-nav-link {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: clamp(16px, 2vw, 24px);
-}
-
 .play-content {
     padding-left: 40px;
     padding-right: 40px;
@@ -621,18 +715,6 @@ body {
     text-align: center;
 }
 
-.play-intro h2 {
-    background: linear-gradient(45deg, #BF8988, #C4A49E);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: clamp(30px, 6vw, 75px);
-    font-weight: 300;
-    text-align: center;
-    margin: 10;
-    margin-top: 20px;
-    font-family: Georgia;
-}
-
 .play-intro p {
     font-size: clamp(16px, 2vw, 18px);
     line-height: 1.5;
@@ -642,48 +724,388 @@ body {
     padding-bottom: 20px;
 }
 
-.image-collage {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 20px;
-}
-
-.image-cell {
+/* Play page carousel: one photo in front, neighbors peeking out behind */
+.carousel {
+    --photo-width: clamp(200px, 42vw, 380px);
     position: relative;
-    width: 100%;
-    padding-top: 125%; 
-}
-
-.image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 0 20px;
     overflow: hidden;
-    border-radius: 10px; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
 }
 
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+.carousel:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+.carousel-track {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: calc(var(--photo-width) * 1.25);
+}
+
+.carousel-item {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    width: var(--photo-width);
+    aspect-ratio: 4 / 5;
+    /* Default: hidden, tucked in behind the front photo */
+    transform: translateX(-50%) scale(0.6);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
 }
 
-.image-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.image-container:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+.carousel-item.is-center {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.carousel-item.is-left,
+.carousel-item.is-right {
+    opacity: 0.85;
+    filter: brightness(0.85);
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.carousel-item.is-left {
+    transform: translateX(-115%) scale(0.8);
+}
+
+.carousel-item.is-right {
+    transform: translateX(15%) scale(0.8);
+}
+
+.carousel-item.is-left:hover,
+.carousel-item.is-right:hover {
+    opacity: 1;
+    filter: brightness(1);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: calc(10px + var(--photo-width) * 0.625);
+    transform: translateY(-50%);
+    z-index: 4;
+    width: clamp(36px, 6vw, 48px);
+    height: clamp(36px, 6vw, 48px);
+    border: none;
+    border-radius: 50%;
+    background-color: var(--icon-color);
+    color: var(--text-color);
+    font-size: clamp(16px, 2.5vw, 22px);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: none;
+    }
 }
 
 * {
     font-family: 'Work Sans', sans-serif;
+}
+
+/* ---------------------------------------------------------------------
+   Louie: pixel dog who wanders along the bottom of the screen (louie.js)
+   The layer ignores clicks so the page stays usable; only Louie himself
+   (and nothing around him) catches the pointer.
+   --------------------------------------------------------------------- */
+/* The strip Louie roams in. His ground is the bottom edge. Overflow stays
+   visible so hearts, bubbles and a dragged Louie can rise above it. */
+.louie-yard {
+    position: relative;
+    min-height: 104px; /* one Louie tall (46px frame x 2.25) */
+}
+
+/* Home page: Louie's own row under the email bubble, menu on the right */
+/* Pinned to the bottom of the window and out of the layout flow, so the
+   name block stays centered in the full window height */
+.home-louie {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 0 0 0 4%;
+}
+
+/* Very short windows: not enough room under the centered name, so his row
+   goes back below it instead of overlapping */
+@media (max-height: 640px) {
+    .home-louie {
+        position: static;
+        align-self: stretch;
+        margin-top: calc(var(--title) * 0.15);
+    }
+}
+
+/* Sized from the window height so it always fits in the space under the
+   centered name block */
+.home-louie .louie-menu {
+    gap: 2px;
+    padding: 0 4vw 10px 0;
+}
+
+.home-louie .louie-menu-item {
+    font-size: clamp(12px, 2.1vh, var(--label));
+    line-height: 1.2;
+    padding: 3px 0;
+}
+
+.home-louie .louie-yard {
+    flex: 1;
+}
+
+.louie-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.louie-menu-item {
+    padding: 4px 0;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: var(--label);
+    font-weight: bold;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s ease, transform 0.2s ease;
+}
+
+.louie-menu-item:hover,
+.louie-menu-item:focus-visible {
+    text-decoration-color: currentColor;
+}
+
+.louie-menu-item:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.louie-menu-item[hidden] {
+    display: none;
+}
+
+/* Props Louie interacts with (food bowl, ball) */
+.louie-prop {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.louie.is-asleep {
+    display: none;
+}
+
+/* The fetch ball: a 44px hit area (easy to grab on phones) around the
+   little pixel ball. Positioned by louie.js. */
+.louie-ball {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    touch-action: none; /* a finger drags the ball instead of scrolling */
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+}
+
+.louie-ball[hidden] {
+    display: none;
+}
+
+.louie-ball.is-held {
+    cursor: grabbing;
+}
+
+.louie-ball img {
+    image-rendering: pixelated;
+    pointer-events: none;
+    user-select: none;
+}
+
+.louie-ball:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .louie-yard {
+        min-height: 69px; /* 46px frame x 1.5 on phones */
+    }
+
+    .home-louie {
+        gap: 12px;
+    }
+}
+
+.louie {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: grab;
+    pointer-events: auto;
+    touch-action: none; /* let a finger drag him instead of scrolling */
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+}
+
+.louie:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+.louie.is-dragging {
+    cursor: grabbing;
+}
+
+/* The body box ends at his feet; the 2 empty rows under them in each frame
+   are clipped off so he stands right on the bottom edge (louie.js sizes it) */
+.louie-body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+}
+
+.louie-sprite {
+    display: block;
+    width: 100%;
+    image-rendering: pixelated; /* keep the pixel art crisp when scaled up */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Sniffing: a little bob, like the desktop version */
+.louie.is-sniffing .louie-body {
+    animation: louie-sniff 0.6s ease-in-out infinite;
+}
+
+/* Held up: a slight tilt */
+.louie.is-dragging .louie-body {
+    transform: rotate(-11deg);
+}
+
+/* Petted: quick bounce with a light flash */
+.louie-body.is-petted {
+    animation: louie-pet 0.3s ease-out;
+}
+
+@keyframes louie-sniff {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes louie-pet {
+    0% { transform: scale(1); filter: brightness(1); }
+    33% { transform: scale(1.1); filter: brightness(1.5); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+
+/* Pixel heart (same 7x6 pattern as the desktop app) */
+.louie-heart {
+    position: absolute;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges'%3E%3Cpath fill='%23FF6BB0' d='M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z'/%3E%3Cpath fill='%23fff' d='M1 1h1v1H1z'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.louie-bubble {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 6px 12px;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    background-color: var(--icon-color);
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: louie-bubble-in 0.25s ease-out;
+    transition: opacity 0.4s ease;
+}
+
+.louie-bubble.is-leaving {
+    opacity: 0;
+}
+
+@keyframes louie-bubble-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .louie.is-sniffing .louie-body,
+    .louie-body.is-petted,
+    .louie-bubble {
+        animation: none;
+    }
 }
