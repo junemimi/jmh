@@ -350,7 +350,17 @@
 
             function placeBall() {
                 const hit = ball.offsetWidth || 44;
-                ball.style.transform = "translate3d(" + (cx - hit / 2) + "px, " + (-(up - hit / 2)) + "px, 0)";
+                // The hit area is bigger than the ball, so keep the hit area
+                // inside the yard and shift the ball within it. Letting it
+                // hang past the bottom or sides of the window would make the
+                // page scrollable each time the ball lands, and the scrollbar
+                // popping in and out jiggles the whole page.
+                const left = cx - hit / 2;
+                const bottom = up - hit / 2;
+                const boxLeft = Math.min(Math.max(left, 0), Math.max(0, yardWidth() - hit));
+                const boxBottom = Math.max(bottom, 0);
+                ball.style.transform = "translate3d(" + boxLeft + "px, " + (-boxBottom) + "px, 0)";
+                ballImg.style.transform = "translate(" + (left - boxLeft) + "px, " + (boxBottom - bottom) + "px)";
             }
             function ceilingUp() {
                 // Let the ball fly up to the top of the window, not just the yard
